@@ -1,3 +1,4 @@
+"use client"
 import Copyright from "@/components/global/copyright";
 import "./globals.css";
 import Rootprovider from "@/components/provider/rootProvider";
