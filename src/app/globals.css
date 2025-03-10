@@ -1,26 +1,171 @@
 @import "tailwindcss";
+@plugin "tailwindcss-animate";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: Monument;
+  font-weight: 100 !important;
+  src: url("../../public/fonts/MonumentExtended-Regular.ttf");
 }
+
+@font-face {
+  font-family: PPMonument;
+  font-weight: 100 !important;
+  src: url("../../public/fonts/PPMonumentExtended-Variable (3).ttf");
+}
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-light: var(--light);
+  --color-highlight: var(--highlight);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --gradient: linear-gradient(270deg, #d694c1 0%, #5cc7ee 57%, #e9e7d4 100%);
+  --background: #121027;
+  --foreground: #f5f5f5;
+  --primary: #fefefd;
+  --primary-foreground: #fefefd;
+  --secondary: #110f26;
+  --secondary-foreground: #f5f5f5;
+  --accent: #0c0a21;
+  --accent-foreground: #f5f5f5;
+  --light: #f5f5f5;
+  --highlight: #fefefd;
+  --border: #f5f5f5;
+  --input: #f5f5f5;
+  --ring: #f5f5f5;
+  --radius: 1rem;
+  --shadow-gradient: 0 4px 10px rgba(214, 148, 193, 0.4),
+    0 6px 15px rgba(92, 199, 238, 0.3), 0 8px 20px rgba(233, 231, 212, 0.2);
+}
+
+.dark {
+  --background: #110f26;
+  --foreground: #fefefd;
+  --primary: #fefefd;
+  --primary-foreground: #fefefd;
+  --secondary: #0c0a21;
+  --secondary-foreground: #f5f5f5;
+  --accent: #0c0a21;
+  --accent-foreground: #fefefd;
+  --light: #f5f5f5;
+  --highlight: #fefefd;
+  --border: #f5f5f5;
+  --input: #f5f5f5;
+  --ring: #f5f5f5;
+  --radius: 1rem;
+}
+
+@layer base {
+  * {
+    font-family: Monument;
+  }
+  body {
+    @apply bg-background text-foreground;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    overflow-x: hidden;
+    position: relative;
+  }
+  p {
+    font-family: PPMonument !important;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .bg-gradient {
+    background: var(--gradient);
+  }
+  .gradient-shadow {
+    box-shadow: var(--shadow-gradient);
+  }
+  .text-gradient {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-gradient-clip {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+  .gridAnim {
+    transition: all linear 0.3s;
+    background-size: 35px 35px;
+    background-position-x: 10rem;
+    animation: backgroundP 600s infinite;
+    background-image: linear-gradient(to right, #4b4a4b27, transparent 1px),
+      linear-gradient(to bottom, #4b4a4b52, transparent 1px);
+  }
+
+  @keyframes backgroundP {
+    0% {
+      background-position: 0rem;
+    }
+    100% {
+      background-position: 1000rem;
+    }
+  }
+  .mask-gradient {
+    background: linear-gradient(90deg, #00000000, #ffffff10, #00000000);
+  }
+
+  .inifinity-scroll {
+    animation: scroll 10s linear infinite;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .random-moveAnimation {
+    animation: move 10s infinite ease-in-out;
+  }
+
+  @keyframes move {
+    0% {
+      transform: translateY(10px) rotate(1deg);
+    }
+    25% {
+      transform: translateY(-5px) rotate(0.5deg);
+    }
+    50% {
+      transform: translateY(0) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-5px) rotate(-0.5deg);
+    }
+    100% {
+      transform: translateY(10px) rotate(1deg);
+    }
+  }
+  h4{
+    font-family: sans-serif !important;
+  }
 }
+
+.MyGradient {
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0)
+  );
+}
+
