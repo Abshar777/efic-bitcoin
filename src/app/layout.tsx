@@ -11,7 +11,7 @@ export default function RootLayout({
 }>) {
   return (
     <>
-    <Aos />
+    {/* <Aos /> */}
     <html lang="en">
       <head>
         <link
