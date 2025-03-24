@@ -154,8 +154,31 @@
       transform: translateY(10px) rotate(1deg);
     }
   }
-  h4{
+
+  h4 {
     font-family: sans-serif !important;
+  }
+}
+
+.random-moveAnimation2 {
+  animation: moveL 10s infinite ease-in-out;
+}
+
+@keyframes moveL {
+  0% {
+    transform: translateY(-10px) rotate(-1deg);
+  }
+  25% {
+    transform: translateY(5px) rotate(-0.5deg);
+  }
+  50% {
+    transform: translateY(0) rotate(0deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(0.5deg);
+  }
+  100% {
+    transform: translateY(-10px) rotate(-1deg);
   }
 }
 
@@ -168,4 +191,3 @@
     rgba(0, 0, 0, 0)
   );
 }
-

@@ -11,11 +11,7 @@ import Footer from "@/components/global/footer";
 import Copyright from "@/components/global/copyright";
 export default function Home() {
   return (
-    <div className="bg-background relative md:px-[2rem]  px-1 w-screen">
-      <div className="w-[30rem] h-[30rem] bg-gradient rounded-full blur-3xl opacity-10 absolute top-30 -left-50"></div>
-      <div className="w-[30rem] h-[30rem] bg-gradient rounded-full blur-3xl opacity-5 absolute top-30 -left-50"></div>
-
-      <Nav />
+    <>
       <Hero />
       <div className="gridAnim  w-full ">
         <div className="w-[30rem] h-[30rem] bg-gradient rounded-full blur-3xl opacity-10 absolute top-10 hidden -right-[20%]"></div>
@@ -32,10 +28,7 @@ export default function Home() {
         >
           <PlatformActivity />
         </motion.div>
-        <TrustedBy />
-        <Footer />
       </div>
-     
-    </div>
+    </>
   );
 }

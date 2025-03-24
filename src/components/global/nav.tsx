@@ -1,11 +1,23 @@
+"use client";
 import { AuthData, navData } from "@/data/navData";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Menu } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 
 const Nav = () => {
+  const pathname = usePathname();
   return (
     <div className="flex sticky backdrop-blur-md bg-background/5 md:mt-2 rounded-xl   md:top-2 top-0 z-50  items-center md:px-10 py-2 justify-between">
       <div className="flex items-center gap-4">
@@ -20,7 +32,12 @@ const Nav = () => {
       <div className="md:flex hidden items-center gap-4">
         {navData.map((item) => (
           <Link key={item.name} href={item.href}>
-            <p className="text-sm font-extrabold text-gray-200 hover:text-white transition-all duration-300 tracking-wider">
+            <p
+              className={cn(
+                "text-sm font-extrabold text-gray-200 hover:text-white transition-all duration-300 tracking-wider",
+                pathname == item.href && "text-gradient"
+              )}
+            >
               {item.name}
             </p>
           </Link>
@@ -45,12 +62,50 @@ const Nav = () => {
         ))}
       </div>
       <div className="md:hidden flex items-center gap-4">
-        <Button
-          variant="ghost"
-          className="text-sm rounded-2xl cursor-pointer font-thin text-gray-200 hover:text-white transition-all duration-300 tracking-wide"
-        >
-          <Menu size={30} />
-        </Button>
+        <Sheet>
+          <SheetTrigger>
+            <div
+              className={cn(
+                "text-sm rounded-2xl cursor-pointer font-thin text-gray-200 hover:text-white transition-all duration-300 tracking-wide",
+                buttonVariants({ variant: "ghost" })
+              )}
+            >
+              <Menu size={30} />
+            </div>
+          </SheetTrigger>
+          <SheetContent className="bg-background/20 rounded-xl backdrop-blur-lg">
+            <div className="w-full h-full gridAnim">
+              <SheetHeader className="border-b border-dashed ">
+                <SheetTitle>Menu</SheetTitle>
+              </SheetHeader>
+
+              <div>
+                <div className="p-2 bg-zinc-900/10 border-b ">
+                  <Link className="" href="/">
+                    <span>Home</span>
+                  </Link>
+                </div>
+                {navData.map((item, index) => (
+                  <div key={index} className="p-2 bg-zinc-900/10 border-b ">
+                    <Link className="" href={item.href}>
+                      <span>{item.name}</span>
+                    </Link>
+                  </div>
+                ))}
+                {AuthData.map((item, index) => (
+                  <div
+                    key={index + 10}
+                    className="p-2 bg-zinc-900/10 border-b "
+                  >
+                    <Link className="" href={item.href}>
+                      <span>{item.name}</span>
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </SheetContent>
+        </Sheet>
       </div>
     </div>
   );

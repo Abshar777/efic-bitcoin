@@ -1,7 +1,7 @@
 const navData = [
   {
     name: "Presale",
-    href: "/",
+    href: "/presale",
   },
   {
     name: "EFIC Public Sale",
@@ -14,11 +14,11 @@ const navData = [
 const AuthData = [
   {
     name: "Login",
-    href: "/login",
+    href: "/auth/login",
   },
   {
     name: "Register",
-    href: "/register",
+    href: "/auth/register",
   },
 ];
 
