@@ -7,7 +7,7 @@ const highLightTabs = () => {
     <div className="min-h-screen w-full bg-background gridAnim p-4">
       <div className="w-full mx-auto space-y-12">
         {/* Blue Border Box */}
-        <div className=" rounded-2xl p-8">
+        <div className=" rounded-2xl md:p-8">
           {/* Tabs Navigation */}
           <Tabs defaultValue="highlights" className="w-full">
             <TabsList className="bg-[#1a1932] w-full p-6 rounded-xl ">
