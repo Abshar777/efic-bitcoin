@@ -6,6 +6,7 @@ import TokenSale from "@/components/page-section/sale/tokenSale";
 import BlurText from "@/components/animation/blurText";
 import { containerVaribles } from "@/constants/animation";
 import { motion } from "motion/react";
+import HighLightTabs from "@/components/page-section/sale/highLightTabs";
 const page = () => {
   return (
     <div className="gridAnim w-full">
@@ -26,6 +27,7 @@ const page = () => {
       <ImportWallet />
       <SaleList />
       <TokenSale />
+      <HighLightTabs />
     </div>
   );
 };

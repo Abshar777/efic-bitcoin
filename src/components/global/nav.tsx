@@ -3,7 +3,7 @@ import { AuthData, navData } from "@/data/navData";
 import { Button, buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { Menu } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -18,6 +18,11 @@ import {
 
 const Nav = () => {
   const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOpen = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="flex sticky backdrop-blur-md bg-background/5 md:mt-2 rounded-xl   md:top-2 top-0 z-50  items-center md:px-10 py-2 justify-between">
       <div className="flex items-center gap-4">
@@ -62,7 +67,7 @@ const Nav = () => {
         ))}
       </div>
       <div className="md:hidden flex items-center gap-4">
-        <Sheet>
+        <Sheet open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
           <SheetTrigger>
             <div
               className={cn(
@@ -80,13 +85,20 @@ const Nav = () => {
               </SheetHeader>
 
               <div>
-                <div className="p-2 bg-zinc-900/10 border-b ">
+                <div
+                  onClick={handleOpen}
+                  className="p-2 bg-zinc-900/10 border-b "
+                >
                   <Link className="" href="/">
                     <span>Home</span>
                   </Link>
                 </div>
                 {navData.map((item, index) => (
-                  <div key={index} className="p-2 bg-zinc-900/10 border-b ">
+                  <div
+                    onClick={handleOpen}
+                    key={index}
+                    className="p-2 bg-zinc-900/10 border-b "
+                  >
                     <Link className="" href={item.href}>
                       <span>{item.name}</span>
                     </Link>
@@ -94,6 +106,7 @@ const Nav = () => {
                 ))}
                 {AuthData.map((item, index) => (
                   <div
+                    onClick={handleOpen}
                     key={index + 10}
                     className="p-2 bg-zinc-900/10 border-b "
                   >
